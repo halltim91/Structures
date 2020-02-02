@@ -1,2 +1,2 @@
 # Structures
-Implementations of data structures
+Personal implementations of data structures
