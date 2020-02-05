@@ -52,6 +52,30 @@ class linkedList:
 		self.tail.next = temp
 		self.tail = self.tail.next
 
+	#Iteratively searches the list for node with data.
+	#Returns True if data has been found and deleted
+	def delete(self, data):
+		temp = self.head
+		if temp is None:	#head is null
+			return False
+
+		if temp.data is data:	#data is in head
+			if temp.next is not None:
+				self.head = temp.next
+				temp = None
+				return True
+		#iterate through other nodes
+		while temp.next is not None:
+			prev = temp
+			temp = temp.next
+			if temp.data is data:
+				prev.next = temp.next
+				temp = None
+				return True
+
+		return False
+
+
 	#Prints out data in each node
 	def print(self):
 		if self.head is None:
@@ -82,7 +106,7 @@ list.push(5)
 list.push(67)
 list.print()
 
-print("Appending items to end of the list")
+print("\nAppending items to end of the list")
 list.append(10)
 list.append(3)
 list.append(4)
@@ -91,6 +115,17 @@ list.append2(32)
 list.append2(100)
 list.print()
 
-print("Clearing List")
+if list.delete(67):
+	print("\nDeleted 67")
+	list.print()
+if list.delete(3):
+	print("\nDeleted 3")
+	list.print()
+if list.delete(100):
+	print("\nDeleted 100")
+	list.print()
+
+print("\nClearing List")
 list.clear()
 list.print()
+
